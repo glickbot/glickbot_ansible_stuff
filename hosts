@@ -1,0 +1,18 @@
+[node1]
+192.168.1.182
+[node2]
+192.168.1.183
+[stanchion]
+192.168.1.182
+192.168.1.183
+[cluster]
+192.168.1.182 hostname=node1
+192.168.1.183 hostname=node2
+192.168.1.184 hostname=node3
+192.168.1.185 hostname=node4
+192.168.1.186 hostname=node5
+
+[cluster:vars]
+mount_src=/dev/vda1
+mount_dest=/
+fs_device=vda

@@ -1,0 +1,11 @@
+- name: Disable Selinux 
+  lineinfile: dest=/etc/selinux/config state=present regexp='^SELINUX=' line='SELINUX=disabled'
+  only_if: is_set('$selinux')
+
+- name: Disable Selinux live
+  command: echo 0 > /selinux/enforce
+  when_string: $selinux == 'disabled'
+
+- name: Enable Selinux live
+  command: echo 1 > /selinux/enforce
+  when_string: $selinux == 'enabled'

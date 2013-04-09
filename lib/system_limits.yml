@@ -1,0 +1,2 @@
+- name: Limits conf.d entry
+  template: dest=/etc/security/limits.d/$user.conf src=lib/system_limits.j2

@@ -1,0 +1,2 @@
+- name: yum update repos
+  command: yum makecache

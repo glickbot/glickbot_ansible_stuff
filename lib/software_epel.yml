@@ -1,0 +1,8 @@
+#- name: verify epel
+#  yum: name=epel-release state=latest
+#  notify: install epel
+#  ignore_errors: yes
+#  register: epel_result
+
+- name: install epel
+  command: yum -y install "ftp://mirror.cs.princeton.edu/pub/mirrors/fedora-epel/6/i386/epel-release-6-8.noarch.rpm" creates=/etc/yum.repos.d/epel.repo

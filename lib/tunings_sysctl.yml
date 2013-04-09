@@ -1,0 +1,26 @@
+- name: riak swappiness
+  sysctl: name=vm.swappiness value=0 state=present
+
+- name: riak tcp_max_syn_backlog
+  sysctl: name=net.ipv4.tcp_max_syn_backlog value=40000 state=present
+
+- name: riak somaxconn
+  sysctl: name=net.core.somaxconn value=4000 state=present
+
+- name: riak tcp_timestamps
+  sysctl: name=net.ipv4.tcp_timestamps value=0 state=present
+
+- name: riak tcp_stack
+  sysctl: name=net.ipv4.tcp_sack value=1 state=present
+
+- name: riak tcp_window_scaling
+  sysctl: name=net.ipv4.tcp_window_scaling value=1 state=present
+
+- name: riak tcp_fin_timeout
+  sysctl: name=net.ipv4.tcp_fin_timeout value=15 state=present
+
+- name: riak tcp_keepalive_intvl
+  sysctl: name=net.ipv4.tcp_keepalive_intvl value=30 state=present
+
+- name: riak tcp_tw_reuse
+  sysctl: name=net.ipv4.tcp_tw_reuse value=1 state=present

@@ -1,0 +1,2 @@
+- name: Install jq
+  copy: src=lib/software_jq.file dest=/usr/bin/jq mode=0755

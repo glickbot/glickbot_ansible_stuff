@@ -1,0 +1,7 @@
+- name: riak cluster plan
+  command: riak-admin cluster plan
+  when_string: $ansible_hostname == 'node1'
+
+- name: riak cluster plan
+  command: riak-admin cluster commit
+  when_string: $ansible_hostname == 'node1'

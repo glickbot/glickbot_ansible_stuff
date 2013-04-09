@@ -1,0 +1,2 @@
+- name: Configure hosts file
+  template: src=lib/system_hosts.j2 dest=/etc/hosts

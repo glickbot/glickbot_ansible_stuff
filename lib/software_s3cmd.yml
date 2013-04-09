@@ -1,0 +1,6 @@
+- name: install s3cmd repo
+  template: dest=/etc/yum.repos.d/s3tools.repo src=lib/software_s3cmd.j2
+  notify: yum update repos
+
+- name: install s3cmd
+  yum: name=s3cmd state=latest

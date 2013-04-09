@@ -1,0 +1,9 @@
+#- name: verify epel
+#  yum: name=epel-release state=latest
+#  notify: install epel
+#  ignore_errors: yes
+#  register: epel_result
+
+- name: install bashorepo
+  command: yum -y install "http://yum.basho.com/gpg/basho-release-6-1.noarch.rpm" creates=/etc/yum.repos.d/basho.repo
+  notify: yum update repos

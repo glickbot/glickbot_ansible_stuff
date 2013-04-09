@@ -1,0 +1,20 @@
+- hosts: cluster
+  tasks:
+    - include: lib/system_hosts.yml
+    - include: lib/system_proxy.yml
+    - include: lib/system_network.yml
+    - include: lib/system_selinux.yml selinux=disabled
+    - include: lib/system_iptables.yml
+    - include: lib/system_limits.yml user=root
+    - include: lib/system_limits.yml user=riak
+    - include: lib/tunings_fs.yml fs_device=vda
+    - include: lib/tunings_sysctl.yml
+    - include: lib/software_epel.yml
+    - include: lib/software_jq.yml
+    - include: lib/software_s3cmd.yml
+    - include: lib/software_riak_src.yml
+    - include: lib/software_bashorepo.yml
+    - include: lib/software_riak.yml
+  handlers:
+    - include: lib/handler_yum.yml
+    - include: lib/handler_hostname.yml

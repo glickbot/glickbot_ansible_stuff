@@ -1,0 +1,12 @@
+- name: Configure ext4 mount
+  mount: name=$mount_dest src=$mount_src fstype=ext4 opts=defaults,noatime,barrier=0,data=writeback state=present
+  only_if: is_set('$mount_src') and is_set('$mount_dest')
+
+- name: Change scheduler
+  lineinfile: dest=/etc/rc.d/rc.local state=present regexp='deadline' line='echo deadline > /sys/block/$fs_device/queue/scheduler'
+  #only_if: is_set('$fs_device')
+  when_set: $fs_device
+
+- name: Change Scheduler live
+  command: echo deadline > /sys/block/$fs_device/queue/scheduler
+  when_string: ${ansible_devices.$fs_device.scheduler_mode} != 'deadline'

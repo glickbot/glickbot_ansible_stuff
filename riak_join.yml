@@ -1,0 +1,5 @@
+- hosts: cluster
+  tasks:
+    - name: riak join node1
+      command: riak-admin cluster join node1
+      when_string: $ansible_hostname != 'node1'
